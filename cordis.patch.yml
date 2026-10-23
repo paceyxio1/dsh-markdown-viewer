@@ -1,0 +1,5 @@
+# dsh-plugin-markdown-viewer bundle patch.
+# Registers this plugin when DSH loads the profile that lists it.
+- insert:
+    - id: markdown-viewer
+      name: dsh-plugin-markdown-viewer

@@ -1,0 +1,145 @@
+/**
+ * Bilingual copy for the plugin's own surfaces.
+ *
+ * The plugin registers no DSH locale namespace on purpose: a namespace would
+ * have to be registered on the Host and re-registered on every locale change,
+ * and this plugin's copy is confined to one settings page. The browser locale
+ * picks the dictionary instead.
+ */
+
+/** Whether the browser is running a Chinese locale. */
+export function isChinese(): boolean {
+  const language = typeof navigator === 'undefined' ? '' : navigator.language ?? ''
+  const htmlLang = typeof document === 'undefined' ? '' : document.documentElement.lang
+  return [language, htmlLang].some((value) => /^zh/i.test(value))
+}
+
+const zh = {
+  sectionLabel: 'Markdown 渲染',
+  title: 'Markdown 渲染模式',
+  intro: '控制助手消息里 Markdown 的渲染方式。总开关关闭时完全沿用 DSH 默认渲染。',
+  enabledTitle: '启用渲染控制',
+  enabledDesc: '关闭后本插件不介入任何渲染，等同未安装。',
+  scopeTitle: '应用范围',
+  scopeDesc: '选择下方渲染选项作用的位置。',
+  scopeChat: '仅对话框',
+  scopeSidebar: '仅侧栏预览',
+  scopeBoth: '对话框和侧栏预览',
+  modeTitle: '渲染模式',
+  modeDesc: '选择助手消息里 Markdown 文本的呈现方式。',
+  modeStandard: '标准渲染',
+  modeStandardDesc: 'DSH 内置渲染：GFM、代码高亮、公式（KaTeX）。',
+  modePlain: '纯文本',
+  modePlainDesc: '去掉 Markdown 标记，只保留可读文字。',
+  modeRaw: '源码',
+  modeRawDesc: '显示 Markdown 原文，便于复制与校对。',
+  contentTitle: '内容增强',
+  contentDesc: '仅在标准渲染模式下生效。',
+  emojiTitle: 'Emoji 短代码',
+  emojiDesc: '把 :smile: 这类短代码转换成 emoji。',
+  tocTitle: '目录',
+  tocDesc: '消息包含两个以上标题时，在顶部生成目录。',
+  anchorsTitle: '标题锚点',
+  anchorsDesc: '在标题旁显示 # 锚点，便于定位与引用。',
+  linkTitle: '链接新标签页打开',
+  linkDesc: '外部链接使用新标签页打开。',
+  collapseTitle: '长代码块折叠',
+  collapseDesc: '超过 24 行的代码块默认折叠，可展开查看。',
+  tildeTitle: '单波浪号原样显示',
+  tildeDesc: 'DSH 解析器误把单个 ~ 渲染成删除线（GFM 规范仅 ~~ 才是删除线）；开启后单个 ~ 按原样显示。',
+  layoutTitle: '版式',
+  layoutDesc: '调整消息内容的宽度与字号。',
+  widthTitle: '内容宽度',
+  widthDefault: '默认',
+  widthWide: '较宽',
+  widthFull: '全宽',
+  widthNarrow: '较窄',
+  fontTitle: '正文字号',
+  fontDefault: '默认',
+  fontCompact: '紧凑',
+  fontComfortable: '宽松',
+  reset: '恢复默认设置',
+  resetDone: '已恢复默认设置',
+  on: '开',
+  off: '关',
+  tocHeading: '本消息目录',
+  copy: '复制',
+  copied: '已复制',
+  expandCode: '展开代码',
+  collapseCode: '收起代码',
+  think: '思考',
+  imageAlt: '图片',
+  stopped: '已停止',
+  unknownBlock: '未知内容块',
+  plainEmpty: '（无可显示的文本内容）',
+  sourceUnavailable: '（无法读取文件源码）',
+}
+
+const en: typeof zh = {
+  sectionLabel: 'Markdown rendering',
+  title: 'Markdown rendering mode',
+  intro: 'Controls how Markdown is rendered inside assistant messages. With the master switch off, DSH renders exactly as it always has.',
+  enabledTitle: 'Enable rendering control',
+  enabledDesc: 'When off, this plugin does not touch rendering at all.',
+  scopeTitle: 'Apply to',
+  scopeDesc: 'Where the rendering options below take effect.',
+  scopeChat: 'Chat only',
+  scopeSidebar: 'Sidebar preview only',
+  scopeBoth: 'Chat and sidebar preview',
+  modeTitle: 'Rendering mode',
+  modeDesc: 'How Markdown text in assistant messages is presented.',
+  modeStandard: 'Standard',
+  modeStandardDesc: "DSH's built-in renderer: GFM, code highlighting, KaTeX math.",
+  modePlain: 'Plain text',
+  modePlainDesc: 'Drop Markdown markup and keep readable text only.',
+  modeRaw: 'Raw source',
+  modeRawDesc: 'Show the Markdown source for copying and proofing.',
+  contentTitle: 'Content enhancements',
+  contentDesc: 'Applies in Standard mode only.',
+  emojiTitle: 'Emoji shortcodes',
+  emojiDesc: 'Convert shortcodes such as :smile: into emoji.',
+  tocTitle: 'Table of contents',
+  tocDesc: 'Prepend a table of contents when a message has two or more headings.',
+  anchorsTitle: 'Heading anchors',
+  anchorsDesc: 'Reveal a # anchor next to each heading.',
+  linkTitle: 'Open links in a new tab',
+  linkDesc: 'External links open in a new tab.',
+  collapseTitle: 'Collapse long code blocks',
+  collapseDesc: 'Code blocks longer than 24 lines start collapsed.',
+  tildeTitle: 'Literal single tilde',
+  tildeDesc: "DSH's parser wrongly renders a single ~ as strikethrough (GFM reserves strikethrough for ~~); when on, single ~ stays literal.",
+  layoutTitle: 'Layout',
+  layoutDesc: 'Content width and body text scale.',
+  widthTitle: 'Content width',
+  widthDefault: 'Default',
+  widthWide: 'Wide',
+  widthFull: 'Full',
+  widthNarrow: 'Narrow',
+  fontTitle: 'Body text scale',
+  fontDefault: 'Default',
+  fontCompact: 'Compact',
+  fontComfortable: 'Comfortable',
+  reset: 'Restore defaults',
+  resetDone: 'Defaults restored',
+  on: 'On',
+  off: 'Off',
+  tocHeading: 'On this message',
+  copy: 'Copy',
+  copied: 'Copied',
+  expandCode: 'Expand code',
+  collapseCode: 'Collapse code',
+  think: 'Think',
+  imageAlt: 'Image',
+  stopped: 'Stopped',
+  unknownBlock: 'Unknown content block',
+  plainEmpty: '(no text content)',
+  sourceUnavailable: '(source unavailable)',
+}
+
+/** The dictionary for the current browser locale. */
+export function dict(): typeof zh {
+  return isChinese() ? zh : en
+}
+
+/** The dictionary's shape. */
+export type Dictionary = typeof zh
